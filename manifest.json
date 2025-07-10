@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Green Score - Sustainable Shopping",
+  "version": "1.0",
+  "description": "Displays sustainability score on product pages of e-commerce sites.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["http://localhost:1000/"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/green_icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.amazon.in/*", "*://*.flipkart.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "background": {
+  "service_worker": "background.js"
+},
+
+  "icons": {
+    "48": "icons/green_icon.png"
+  }
+}
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Score Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🌿 Green Score Dashboard</h1>
+
+    <div class="product-info">
+      <h2 id="product-name"></h2>
+      <p class="score">Green Score: <span id="score-value"></span>/100</p>
+    </div>
+
+    <div class="section">
+      <h3>📊 Score Breakdown</h3>
+      <ul id="breakdown-list" class="breakdown-list"></ul>
+    </div>
+
+    <div class="section">
+      <h3>🤖 AI Sustainability Summary</h3>
+      <div id="summary" class="summary-box">Generating summary...</div>
+    </div>
+  </div>
+
+  <script src="gemini.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
