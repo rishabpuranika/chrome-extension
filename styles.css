@@ -101,3 +101,91 @@ h1 {
 .score-label {
   display: none;
 }
+.gauge-container {
+  width: 200px;
+  height: 120px;
+  position: relative;
+}
+
+.gauge-background {
+  width: 200px;
+  height: 100px;
+  border: 6px solid #444c56;
+  border-bottom: none;
+  border-radius: 100px 100px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gauge-fill {
+  width: 200px;
+  height: 100px;
+  border: 6px solid #7fffaf;
+  border-bottom: none;
+  border-radius: 100px 100px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 0, 75% 0, 75% 100%, 0 100%);
+  transition: clip-path 0.5s ease;
+}
+
+.gauge-needle {
+  width: 2px;
+  height: 80px;
+  background: #ff5252;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(135deg);
+  border-radius: 2px;
+  transition: transform 0.5s ease;
+}
+
+.gauge-center {
+  width: 12px;
+  height: 12px;
+  background: #2d3748;
+  border-radius: 50%;
+  position: absolute;
+  top: 94px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.gauge-labels {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.gauge-label-left {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  font-size: 10px;
+  color: #666;
+  font-weight: bold;
+}
+
+.gauge-label-right {
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+  font-size: 10px;
+  color: #666;
+  font-weight: bold;
+}
+
+.gauge-score {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #7fffaf;
+}

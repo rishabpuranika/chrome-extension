@@ -19,24 +19,14 @@
       </div>
     </div>
     <div class="score-meter" style="margin-left: 12px;">
-      <svg viewBox="0 0 36 20" class="circular-chart" style="width: 160px; height: 90px; position: relative;">
-        <path class="circle-bg"
-              d="M2 18
-                 A16 16 0 0 1 34 18"
-              />
-        <path class="circle"
-              stroke-dasharray="0, 50"
-              d="M2 18
-                 A16 16 0 0 1 34 18"
-              />
-        <!-- Lower limit label -->
-        <text x="2" y="19.5" class="limit-label" style="font-size: 0.7em; fill: #aaa;" text-anchor="start">0</text>
-        <!-- Higher limit label -->
-        <text x="34" y="19.5" class="limit-label" style="font-size: 0.7em; fill: #aaa;" text-anchor="end">100</text>
-        <!-- Score value label (center top of arc) -->
-        <text x="18" y="8" class="score-label" style="font-size: 1.2em; fill: #7fffaf;" text-anchor="middle" alignment-baseline="middle" id="score-text">0</text>
-        <line id="score-needle" x1="18" y1="18" x2="18" y2="2" stroke="#ff5252" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+      <div class="gauge-container" style="position: relative; width: 160px; height: 90px;">
+        <canvas id="gauge-canvas" width="160" height="90"></canvas>
+        <div class="gauge-labels" style="position: absolute; width: 100%; left: 0; top: 0; height: 100%; pointer-events: none;">
+          <span class="gauge-label-left" style="position: absolute; left: 23px; bottom: 8px; color: #aaa; font-size: 0.9em;">0</span>
+          <span class="gauge-label-right" style="position: absolute; right: 23px; bottom: 8px; color: #aaa; font-size: 0.9em;">100</span>
+          <span class="gauge-score" id="gauge-score" style="position: absolute; left: 50%; top: 18px; transform: translateX(-50%); color: #7fffaf; font-size: 1.5em; font-weight: bold;">0</span>
+        </div>
+      </div>
     </div>
     <div class="section">
       <h3>📊 Score Breakdown</h3>

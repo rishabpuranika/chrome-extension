@@ -23,37 +23,61 @@ function getBreakdown(score) {
   });
 }
 
-function updateScoreMeter(score) {
-  const circle = document.querySelector('.circle');
-  const text = document.getElementById('score-text');
-  const needle = document.getElementById('score-needle');
+function drawGauge(score) {
+  const canvas = document.getElementById('gauge-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Clamp score between 0 and 100
-  const clampedScore = Math.max(0, Math.min(score, 100));
-  // For semicircle, 0-100 maps to 0-50 for stroke-dasharray
-  const dash = (clampedScore / 100) * 50;
-  circle.setAttribute('stroke-dasharray', `${dash}, 50`);
-  text.textContent = `${clampedScore}`;
+  // Gauge parameters
+  const cx = 80, cy = 80, r = 70;
+  const startAngle = Math.PI, endAngle = 0;
+  const lineWidth = 16;
 
-  // Needle calculation for semicircle
-  // 0 score = left (180deg), 100 = right (0deg)
-  const angle = (clampedScore / 100) * 180 + 180; // 180deg (left) to 360deg (right)
-  const radians = (angle * Math.PI) / 180;
-  const r = 16; // radius for needle endpoint
-  const cx = 18, cy = 18;
-  const x2 = cx + r * Math.cos(radians);
-  const y2 = cy + r * Math.sin(radians);
-  needle.setAttribute('x2', x2);
-  needle.setAttribute('y2', y2);
+  // Background arc
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, startAngle, endAngle, false);
+  ctx.strokeStyle = '#444c56';
+  ctx.lineWidth = lineWidth;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+
+  // Foreground arc (score)
+  const scoreAngle = Math.PI + (score / 100) * Math.PI;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, Math.PI, scoreAngle, false);
+  ctx.strokeStyle = '#7fffaf';
+  ctx.lineWidth = lineWidth;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+
+  // Needle
+  const needleAngle = Math.PI + (score / 100) * Math.PI;
+  const needleLength = r - lineWidth / 2;
+  const nx = cx + needleLength * Math.cos(needleAngle);
+  const ny = cy + needleLength * Math.sin(needleAngle);
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(nx, ny);
+  ctx.strokeStyle = '#ff5252';
+  ctx.lineWidth = 4;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+}
+
+function updateGauge(score) {
+  drawGauge(score);
+  const scoreDisplay = document.getElementById('gauge-score');
+  if (scoreDisplay) scoreDisplay.textContent = score;
 }
 
 (async () => {
   const { product, score } = parseQuery();
-document.getElementById("product-name").textContent = product;
-document.getElementById("score-value").textContent = score;
+  document.getElementById("product-name").textContent = product;
+  document.getElementById("score-value").textContent = score;
 
-updateScoreMeter(score); // <- Add this
-getBreakdown(score);
+  updateGauge(score); // <-- use the new gauge
+  getBreakdown(score);
 
   const summary = await generateGeminiSummary(product, score);
   document.getElementById("summary").innerText = summary;
