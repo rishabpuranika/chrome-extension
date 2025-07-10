@@ -1,22 +1,22 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7f5;
+  background-color: #181c1f;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #e0e6ed;
 }
 
 .container {
   max-width: 750px;
   margin: 40px auto;
   padding: 20px;
-  background: white;
+  background: #23272b;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 h1 {
-  color: #2f855a;
+  color: #7fffaf;
   text-align: center;
   margin-bottom: 30px;
 }
@@ -28,7 +28,7 @@ h1 {
 
 .score {
   font-size: 1.3rem;
-  color: #28a745;
+  color: #7fffaf;
   font-weight: bold;
 }
 
@@ -42,21 +42,23 @@ h1 {
 }
 
 .breakdown-list li {
-  background-color: #e6ffed;
-  border-left: 6px solid #28a745;
+  background-color: #22332b;
+  border-left: 6px solid #7fffaf;
   margin: 10px 0;
   padding: 10px 15px;
   border-radius: 6px;
   font-size: 1rem;
+  color: #e0e6ed;
 }
 
 .summary-box {
-  background: #f0f0f0;
+  background: #23272b;
   padding: 15px;
-  border-left: 6px solid #2f855a;
+  border-left: 6px solid #7fffaf;
   border-radius: 6px;
   font-size: 1rem;
   white-space: pre-wrap;
+  color: #e0e6ed;
 }
 .score-meter {
   display: flex;
@@ -72,7 +74,7 @@ h1 {
 
 .circle-bg {
   fill: none;
-  stroke: #eee;
+  stroke: #444c56;
   stroke-width: 3.8;
 }
 
@@ -80,12 +82,12 @@ h1 {
   fill: none;
   stroke-width: 3.8;
   stroke-linecap: round;
-  stroke: #4caf50;
+  stroke: #7fffaf;
   transition: stroke-dasharray 0.6s ease;
 }
 
 .percentage {
-  fill: #2f855a;
+  fill: #7fffaf;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.5em;
   text-anchor: middle;
