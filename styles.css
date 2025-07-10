@@ -67,9 +67,9 @@ h1 {
 }
 
 .circular-chart {
-  max-width: 120px;
-  max-height: 120px;
-  transform: rotate(-90deg);
+  max-width: 160px;
+  max-height: 90px;
+  transform: none; /* Remove rotation for semicircle */
 }
 
 .circle-bg {

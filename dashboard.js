@@ -29,14 +29,16 @@ function updateScoreMeter(score) {
 
   // Clamp score between 0 and 100
   const clampedScore = Math.max(0, Math.min(score, 100));
-  circle.setAttribute('stroke-dasharray', `${clampedScore}, 100`);
+  // For semicircle, 0-100 maps to 0-50 for stroke-dasharray
+  const dash = (clampedScore / 100) * 50;
+  circle.setAttribute('stroke-dasharray', `${dash}, 50`);
   text.textContent = `${clampedScore}`;
 
-  // Needle calculation
-  // 0 score = top (12 o'clock), 100 = full circle (back to top)
-  const angle = (clampedScore / 100) * 360 - 90; // -90 to start at top
+  // Needle calculation for semicircle
+  // 0 score = left (180deg), 100 = right (0deg)
+  const angle = (clampedScore / 100) * 180 + 180; // 180deg (left) to 360deg (right)
   const radians = (angle * Math.PI) / 180;
-  const r = 14; // radius for needle endpoint (a bit inside the circle)
+  const r = 16; // radius for needle endpoint
   const cx = 18, cy = 18;
   const x2 = cx + r * Math.cos(radians);
   const y2 = cy + r * Math.sin(radians);
