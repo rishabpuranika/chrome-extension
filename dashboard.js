@@ -22,6 +22,7 @@ function getBreakdown(score) {
     list.appendChild(li);
   });
 }
+
 function updateScoreMeter(score) {
   const circle = document.querySelector('.circle');
   const text = document.getElementById('score-text');

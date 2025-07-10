@@ -19,6 +19,7 @@ h1 {
   color: #7fffaf;
   text-align: center;
   margin-bottom: 30px;
+  font-size: 1.8rem;
 }
 
 .product-info {
@@ -27,7 +28,7 @@ h1 {
 }
 
 .score {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #7fffaf;
   font-weight: bold;
 }
@@ -47,8 +48,9 @@ h1 {
   margin: 10px 0;
   padding: 10px 15px;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #e0e6ed;
+  line-height: 1.4;
 }
 
 .summary-box {
@@ -56,10 +58,12 @@ h1 {
   padding: 15px;
   border-left: 6px solid #7fffaf;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
   white-space: pre-wrap;
   color: #e0e6ed;
 }
+
 .score-meter {
   display: flex;
   justify-content: center;
@@ -87,10 +91,13 @@ h1 {
 }
 
 .percentage {
-  fill: #7fffaf;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 0.5em;
-  text-anchor: middle;
-  dominant-baseline: middle;
-  transform: rotate(90deg);
+  display: none;
+}
+
+.limit-label {
+  display: none;
+}
+
+.score-label {
+  display: none;
 }
