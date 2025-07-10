@@ -22,12 +22,24 @@ function getBreakdown(score) {
     list.appendChild(li);
   });
 }
+function updateScoreMeter(score) {
+  const circle = document.querySelector('.circle');
+  const text = document.getElementById('score-text');
+  
+  // Clamp score between 0 and 100
+  const clampedScore = Math.max(0, Math.min(score, 100));
+  
+  circle.setAttribute('stroke-dasharray', `${clampedScore}, 100`);
+  text.textContent = `${clampedScore}`;
+}
 
 (async () => {
   const { product, score } = parseQuery();
-  document.getElementById("product-name").textContent = product;
-  document.getElementById("score-value").textContent = score;
-  getBreakdown(score);
+document.getElementById("product-name").textContent = product;
+document.getElementById("score-value").textContent = score;
+
+updateScoreMeter(score); // <- Add this
+getBreakdown(score);
 
   const summary = await generateGeminiSummary(product, score);
   document.getElementById("summary").innerText = summary;
